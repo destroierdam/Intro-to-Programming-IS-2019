@@ -65,4 +65,4 @@
 
 Изход:
 
-	аbc, abd, abe, abf, abg
+	аbc abd abe abf abg
