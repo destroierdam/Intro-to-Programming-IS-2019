@@ -27,7 +27,7 @@ void mergeSorted(int firstArray[], int sizeFirstArray,
 				 int secondArray[], int sizeSecondArray, 
 				 int thirdAray[], int sizeThirdArray) {
 	
-	int firstArrayIndex = 0, secondArrayIndex = 0, thirdArrayIndex = 0
+	int firstArrayIndex = 0, secondArrayIndex = 0, thirdArrayIndex = 0;
 	
 	for(;firstArrayIndex < sizeFirstArray && 
 		secondArrayIndex < sizeSecondArray &&
@@ -59,7 +59,7 @@ void mergeSorted(int firstArray[], int sizeFirstArray,
 int main() {
 	const int SIZE_OF_ARRAY = 10;
 	int arr[SIZE_OF_ARRAY] = {1, 2, 3, 54, 54, 678, 876, 1231, 98765, 899976};
-	int threeElem[] = {1, 2, 3}
+	int threeElem[] = {1, 2, 3};
 	scalMult(arr, SIZE_OF_ARRAY, 2);
 	/*
 	for(int i = 0; i < SIZE_OF_ARRAY; i++) {
