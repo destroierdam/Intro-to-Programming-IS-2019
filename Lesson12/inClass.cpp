@@ -49,6 +49,8 @@ void strcat(char dest[], char source[]) {
   for(int i = 0; i < sourceLength; i++) {
     dest[i + destLength] = source[i];
   }
+
+  dest[sourceLength + destLength + 1] = '\0';
 }
 
 int main() {
