@@ -69,11 +69,24 @@ void strcat(char destination[], char source[]) {
   strcpy(destination + destinationLength, source);
 }
 
+/// Returns pointern to the beginning of the substring
+char* strstr(char str[], char substring[]) {
+  int strLength = strlen(str);
+  int substringLength = strlen(substring);
+
+  // if the length of the remaining str is less than the length of the substring, we will not find it, we do not need to check further
+  for(int i = 0; i <= strLength - substringLength; i++) {
+    if(strcmp(&str[i], substring) == 0) {
+      return &str[i];
+    }
+  }
+
+  return nullptr;
+}
+
 int main() {
-  char str1[] = "ASD";
+  char str1[] = "ASDFGHJK";
   char str2[] = "HJK";
 
-  strcat(str1, str2);
-
-  cout << str1 << endl;
+  cout << strstr(str1, str2) << endl;
 }
