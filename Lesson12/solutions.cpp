@@ -16,7 +16,7 @@ void printASCIITable() {
 int strlen(char str[]) {
   int length = 0;
   for(int i = 0; ; i++) {
-    if(str[i] != '\0') {
+    if('\0' != str[i]) {
       length++;
     } else {
       break;
@@ -84,9 +84,35 @@ char* strstr(char str[], char substring[]) {
   return nullptr;
 }
 
+bool brackets(char str[]) {
+  int strLength = strlen(str);
+  int counter = 0;
+
+  for(int i = 0; i < strLength; i++) {
+    if('(' == str[i]) {
+      counter++;
+    } else if (')' == str[i]) {
+      counter--;
+    }
+
+    if(counter < 0) {
+      return false;
+    }
+  }
+
+  // if(0 == counter) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+
+  return 0 == counter;
+}
+
 int main() {
   char str1[] = "ASDFGHJK";
   char str2[] = "HJK";
+  char bracketsString[] = "(()))())";
 
-  cout << strstr(str1, str2) << endl;
+  cout << brackets(bracketsString) << endl;
 }
