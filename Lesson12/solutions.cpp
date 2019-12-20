@@ -57,6 +57,8 @@ void strcpy(char destination[], char source[]) {
   for(int i = 0; i < sourceLength; i++) {
     destination[i] = source[i];
   }
+
+  destination[sourceLength] = '\0';
 }
 
 
