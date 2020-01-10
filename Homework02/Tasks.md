@@ -6,7 +6,7 @@
 
 Вход:
 
-    goodbook gbko
+    goodbook gbkod
 
 Изход:
 
