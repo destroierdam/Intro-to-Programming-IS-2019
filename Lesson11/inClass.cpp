@@ -1,12 +1,17 @@
 #include <iostream>
+#include <stdexcept>
+
 using namespace std;
 void sum(int * addrOfNumber1, int number2) {
 	if (addrOfNumber1 != nullptr) {
 		*addrOfNumber1 += number2;
+	} else {
+		throw std::logic_error("Address is nullptr"); // std::invalid_argument
 	}
 }
 
 void scalMult(int arr[], int sizeOfArray, int scalar) {
+	
 	for(int i = 0; i < sizeOfArray; i++) {
 		*arr *= scalar;
 		arr++;
@@ -57,6 +62,17 @@ void mergeSorted(int firstArray[], int sizeFirstArray,
 }
 
 int main() {
+	
+	int n = 7, m = 8;
+	try {
+		sum(nullptr, m);
+	} catch (std::logic_error & ex) {
+		std::cerr << ex.what() << std::endl;
+	}
+	std::cout << "Continue" << std::endl;
+	// n == 15
+	return 0;
+	
 	const int SIZE_OF_ARRAY = 10;
 	int arr[SIZE_OF_ARRAY] = {1, 2, 3, 54, 54, 678, 876, 1231, 98765, 899976};
 	int threeElem[] = {1, 2, 3};

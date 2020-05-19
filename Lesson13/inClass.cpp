@@ -2,7 +2,7 @@
 #include <cmath>
 #include <algorithm>
 using namespace std;
-int factoriel(int n) {
+int factoriel(size_t n) {
   if(n == 0) {
     return 1;
   } // else {

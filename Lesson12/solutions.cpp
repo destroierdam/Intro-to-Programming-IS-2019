@@ -1,5 +1,8 @@
 #include <iostream>
 #include <cstring> // cin, cout for char[]
+#include <string> //
+#include <exception> 
+#include <stdexcept> 
 using std::cin;
 using std::cout;
 using std::endl;
@@ -84,6 +87,18 @@ char* strstr(char str[], char substring[]) {
   return nullptr;
 }
 
+class invalid_brackets_string: public std::exception {
+	std::string message;
+public:
+	invalid_brackets_string(const char * _message, char invalidChar):message(_message) {
+		message += invalidChar;
+	}
+	
+	const char* what() const noexcept override {
+		return this->message.c_str();
+	}
+};
+
 bool brackets(char str[]) {
   int strLength = strlen(str);
   int counter = 0;
@@ -93,7 +108,9 @@ bool brackets(char str[]) {
       counter++;
     } else if (')' == str[i]) {
       counter--;
-    }
+    } else {
+		throw invalid_brackets_string("Character not a bracket", str[i]);
+	}
 
     if(counter < 0) {
       return false;
@@ -108,11 +125,15 @@ bool brackets(char str[]) {
 
   return 0 == counter;
 }
-
 int main() {
   char str1[] = "ASDFGHJK";
   char str2[] = "HJK";
-  char bracketsString[] = "(()))())";
+  char bracketsString[] = "((fsdfdsfsd))()"; // (() 
 
-  cout << brackets(bracketsString) << endl;
+  try {
+	cout << brackets(bracketsString) << endl;
+  } catch (invalid_brackets_string & ex) {
+	  std::cout << ex.what() << std::endl;
+  }
+		
 }

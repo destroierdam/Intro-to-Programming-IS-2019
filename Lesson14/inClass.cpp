@@ -16,19 +16,32 @@ void toLower(char& c) {
 		c += 'a' - 'A';
 	}
 }
+
+class invalid_int_array: public std::exception {
+	std::string message;
+public:
+	invalid_int_array(const char * _message):message(_message) {}
+	
+	const char* what() const noexcept override {
+		return this->message.c_str();
+	}
+};
+
 void gaussRec(char* str, int * arr) {
 	if (*str == '\0') {
 		return;
 	}
+	
 	if (*arr == 1) {
 		toUpper(*str);
-	}
-	if (*arr == -1) {
+	} else if (*arr == -1) {
 		toLower(*str);
-	}
-	if (*arr == 0) {
+	} else if (*arr == 0) {
 		*str = '_';
+	} else {
+		throw invalid_int_array("The integer array contains invalid characters");
 	}
+	
 	gaussRec(str+1, arr+1);
 }
 void gaus() {
